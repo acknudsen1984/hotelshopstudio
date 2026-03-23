@@ -1,26 +1,38 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
 import { getProductUrl, type Product } from "@/lib/products";
 
 type ProductCardProps = {
   readonly product: Product;
 };
 
-// Amazon's Associates image embed URL — loads client-side in browser, bypasses bot protection
-function getAmazonImageUrl(asin: string): string {
-  return `https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=hotelshop-20`;
-}
-
 export default function ProductCard({ product }: ProductCardProps) {
+  const [imgError, setImgError] = useState(false);
+  
+  // Self-hosted product images in /public/products/
+  const imageUrl = `/products/${product.asin}.jpg`;
+
   return (
     <div className="group flex flex-col">
-      {/* Product image — uses Amazon Associates embed URL, fetched client-side */}
       <div className="aspect-square bg-warm-gray overflow-hidden relative">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={getAmazonImageUrl(product.asin)}
-          alt={product.name}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
+        {!imgError ? (
+          <Image
+            src={imageUrl}
+            alt={product.name}
+            fill
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-muted/40 text-xs tracking-widest uppercase font-sans select-none">
+              {product.category.replace("-", " ")}
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col pt-4 pb-6">
