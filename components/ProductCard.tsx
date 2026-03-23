@@ -8,21 +8,25 @@ type ProductCardProps = {
   readonly product: Product;
 };
 
+// ASINs that have a clean PNG with transparent background (bg-removed)
+const PNG_ASINS = new Set(["B0DJG6RPWV"]);
+
 export default function ProductCard({ product }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
-  
-  // Self-hosted product images in /public/products/
-  const imageUrl = `/products/${product.asin}.jpg`;
+
+  const ext = PNG_ASINS.has(product.asin) ? "png" : "jpg";
+  const imageUrl = `/products/${product.asin}.${ext}`;
 
   return (
     <div className="group flex flex-col">
-      <div className="aspect-square bg-warm-gray overflow-hidden relative">
+      {/* White card background — clean look for all product photo styles */}
+      <div className="aspect-square bg-white overflow-hidden relative border border-warm-gray/40">
         {!imgError ? (
           <Image
             src={imageUrl}
             alt={product.name}
             fill
-            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
+            className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             onError={() => setImgError(true)}
           />
