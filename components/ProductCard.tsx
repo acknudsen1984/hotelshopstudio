@@ -1,22 +1,31 @@
+import Image from "next/image";
 import { getProductUrl, type Product } from "@/lib/products";
 
 type ProductCardProps = {
   readonly product: Product;
 };
 
+function getAmazonImageUrl(asin: string): string {
+  return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL500_.jpg`;
+}
+
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group flex flex-col">
-      {/* Image placeholder — warm off-white */}
-      <div className="aspect-square bg-warm-gray flex items-center justify-center overflow-hidden">
-        <span className="text-muted/40 text-xs tracking-widest uppercase font-sans select-none">
-          {product.category}
-        </span>
+      {/* Product image from Amazon */}
+      <div className="aspect-square bg-warm-gray overflow-hidden relative">
+        <Image
+          src={getAmazonImageUrl(product.asin)}
+          alt={product.name}
+          fill
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        />
       </div>
 
       <div className="flex flex-1 flex-col pt-4 pb-6">
         <p className="text-xs text-muted tracking-widest uppercase font-sans mb-1.5">
-          {product.category}
+          {product.category.replace("-", " ")}
         </p>
         <h3 className="font-display text-xl text-charcoal leading-snug font-light">
           {product.name}
