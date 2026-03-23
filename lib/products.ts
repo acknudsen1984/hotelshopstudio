@@ -97,7 +97,7 @@ export const products: readonly Product[] = [
     name: "Vanity Organizer Set",
     price: "$33",
     category: "bathroom",
-    asin: "PLACEHOLDER",
+    asin: "B0DT9QVSB7",
     featured: false,
   },
   {
@@ -125,7 +125,7 @@ export const products: readonly Product[] = [
     name: "Waffle Bath Rug",
     price: "$20",
     category: "bathroom",
-    asin: "PLACEHOLDER",
+    asin: "B01DIG86OO",
     featured: false,
   },
   {
@@ -174,7 +174,7 @@ export const products: readonly Product[] = [
     name: "Dish Towels",
     price: "$29",
     category: "kitchen",
-    asin: "PLACEHOLDER",
+    asin: "B09SKJ9FPQ",
     featured: false,
   },
   {
@@ -356,7 +356,7 @@ export const products: readonly Product[] = [
     name: "Throw Pillows",
     price: "$20",
     category: "home-essentials",
-    asin: "PLACEHOLDER",
+    asin: "B0D14RSYDD",
     featured: false,
   },
   {
