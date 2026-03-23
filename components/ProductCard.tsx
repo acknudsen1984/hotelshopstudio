@@ -1,25 +1,25 @@
-import Image from "next/image";
 import { getProductUrl, type Product } from "@/lib/products";
 
 type ProductCardProps = {
   readonly product: Product;
 };
 
+// Amazon's Associates image embed URL — loads client-side in browser, bypasses bot protection
 function getAmazonImageUrl(asin: string): string {
-  return `https://images-na.ssl-images-amazon.com/images/P/${asin}.01._SL500_.jpg`;
+  return `https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=hotelshop-20`;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="group flex flex-col">
-      {/* Product image from Amazon */}
+      {/* Product image — uses Amazon Associates embed URL, fetched client-side */}
       <div className="aspect-square bg-warm-gray overflow-hidden relative">
-        <Image
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={getAmazonImageUrl(product.asin)}
           alt={product.name}
-          fill
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
         />
       </div>
 
