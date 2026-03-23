@@ -1,0 +1,61 @@
+import type { Metadata } from "next";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
+import EmailSignup from "@/components/EmailSignup";
+import { getProductsByRoom } from "@/lib/products";
+
+export const metadata: Metadata = {
+  title: "Hotel Bathroom — Hotel Shop",
+  description: "Curated hotel-quality bathroom essentials. Towels, dispensers, robes, organizers, and more.",
+};
+
+export default function HotelBathroomPage() {
+  const products = getProductsByRoom("bathroom");
+
+  return (
+    <>
+      <Nav />
+      <main className="flex-1">
+
+        {/* Page header */}
+        <section className="bg-white border-b border-border">
+          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+            <p className="text-xs text-brass tracking-widest uppercase font-sans mb-4">
+              The Edit
+            </p>
+            <h1 className="font-display text-4xl sm:text-5xl text-charcoal font-light">
+              Hotel Bathroom
+            </h1>
+            <p className="mt-4 text-muted text-base font-sans max-w-xl leading-relaxed">
+              Everything you need to make your bathroom feel like a luxury boutique hotel —
+              from soft waffle robes to marble dispensers and woven storage.
+            </p>
+          </div>
+        </section>
+
+        {/* Products grid */}
+        <section className="bg-white">
+          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-16">
+              {products.map((product, i) => (
+                <ProductCard key={`${product.name}-${i}`} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Email CTA */}
+        <section className="bg-off-white border-t border-border">
+          <div className="mx-auto max-w-6xl px-5 py-14 sm:py-16 text-center">
+            <p className="font-display text-2xl text-charcoal font-light mb-2">Get new finds first</p>
+            <p className="text-muted text-sm font-sans mb-6">New additions curated weekly.</p>
+            <div className="flex justify-center"><EmailSignup /></div>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </>
+  );
+}
