@@ -499,6 +499,27 @@ export const products: readonly Product[] = [
     asin: "B0DQ1LXY8L",
     featured: false,
   },
+  {
+    name: "Potholders",
+    price: "$98",
+    category: "kitchen",
+    asin: "B08J8GZXKZ",
+    featured: false,
+  },
+  {
+    name: "Sponge Holder",
+    price: "$27",
+    category: "kitchen",
+    asin: "B0F13PJC47",
+    featured: false,
+  },
+  {
+    name: "Utensil Organizer",
+    price: "$47",
+    category: "kitchen",
+    asin: "B09Y54QX2Z",
+    featured: false,
+  },
 ] as const;
 
 export function getProductUrl(asin: string): string {
@@ -523,4 +544,4 @@ export const CATEGORIES = [
 
 // Compatibility aliases
 export const getProductsByRoom = getProductsByCategory;
-export const ROOMS = CATEGORIES.map(c => ({ slug: c.slug, label: c.label, emoji: "" }));
+export const ROOMS = CATEGORIES.map(c => ({ slug: c.slug, label: c.label, emoji: "" as string }));
