@@ -472,13 +472,6 @@ export const products: readonly Product[] = [
     featured: false,
   },
   {
-    name: "HotelSpa 3-Bottle Modular Shower Dispenser",
-    price: "$30",
-    category: "bathroom",
-    asin: "B01C7PVU3Q",
-    featured: false,
-  },
-  {
     name: "Brighter Barns Gold Spa Shower Dispenser Set (3-Bottle)",
     price: "$35",
     category: "bathroom",
@@ -497,13 +490,6 @@ export const products: readonly Product[] = [
     price: "$25",
     category: "bedroom",
     asin: "B00LV4W1JM",
-    featured: false,
-  },
-  {
-    name: "KEURIG K-Mini Single Serve Coffee Maker (Black)",
-    price: "$90",
-    category: "kitchen",
-    asin: "B07GV2S1GS",
     featured: false,
   },
   {
