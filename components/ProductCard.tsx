@@ -9,7 +9,7 @@ type ProductCardProps = {
 };
 
 // ASINs that have a clean PNG with transparent background (bg-removed)
-const PNG_ASINS = new Set(["B0DJG6RPWV"]);
+const PNG_ASINS = new Set<string>([]);
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
