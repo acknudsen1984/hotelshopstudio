@@ -496,31 +496,10 @@ export const products: readonly Product[] = [
     featured: false,
   },
   {
-    name: "Utopia Towels 8-Piece 600 GSM Hotel & Spa Towel Set (White)",
-    price: "$28",
-    category: "bathroom",
-    asin: "B00GQP1034",
-    featured: false,
-  },
-  {
-    name: "Brighter Barns Gold Spa Shower Dispenser Set (3-Bottle)",
-    price: "$35",
-    category: "bathroom",
-    asin: "B0DP7XSYGB",
-    featured: false,
-  },
-  {
     name: "Beckham Hotel Collection Down Alternative Pillows Queen 2-Pack",
     price: "$39",
     category: "bedroom",
     asin: "B01LYNW421",
-    featured: false,
-  },
-  {
-    name: "HC Collection Platinum Hotel Luxury Bed Sheet Set (Queen, White)",
-    price: "$25",
-    category: "bedroom",
-    asin: "B00LV4W1JM",
     featured: false,
   },
 ] as const;
