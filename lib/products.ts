@@ -496,7 +496,7 @@ export const products: readonly Product[] = [
     featured: false,
   },
   {
-    name: "Beckham Hotel Collection Down Alternative Pillows Queen 2-Pack",
+    name: "Down Alternative Bed Pillows (Queen)",
     price: "$39",
     category: "bedroom",
     asin: "B01LYNW421",
