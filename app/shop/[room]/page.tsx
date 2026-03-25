@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import ProductCard from "@/components/ProductCard";
+import PriceFilter from "@/components/PriceFilter";
 import { getProductsByRoom, ROOMS } from "@/lib/products";
 import Link from "next/link";
 
@@ -63,11 +63,7 @@ export default async function ShopPage({ params }: ShopPageProps) {
           </div>
 
           {roomProducts.length > 0 ? (
-            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-16">
-              {roomProducts.map((product, i) => (
-                <ProductCard key={`${product.name}-${i}`} product={product} />
-              ))}
-            </div>
+            <PriceFilter products={roomProducts} />
           ) : (
             <div className="py-16">
               <p className="text-muted text-sm font-sans">
