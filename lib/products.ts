@@ -94,13 +94,6 @@ export const products: readonly Product[] = [
     featured: false,
   },
   {
-    name: "Vanity Organizer Set",
-    price: "$33",
-    category: "bathroom",
-    asin: "B0DT9QVSB7",
-    featured: false,
-  },
-  {
     name: "Hooks Set of 5",
     price: "$30",
     category: "bathroom",
@@ -119,13 +112,6 @@ export const products: readonly Product[] = [
     price: "$23",
     category: "bathroom",
     asin: "B07HSJ2RL2",
-    featured: false,
-  },
-  {
-    name: "Waffle Bath Rug",
-    price: "$20",
-    category: "bathroom",
-    asin: "B01DIG86OO",
     featured: false,
   },
   {
@@ -487,13 +473,6 @@ export const products: readonly Product[] = [
     asin: "B0DTJVK5Z2",
     featured: false,
   },
-  {
-    name: "Vanity Organizer Set",
-    price: "$33",
-    category: "bathroom",
-    asin: "B0BWXW7B47",
-    featured: false,
-  },
 
   {
     name: "Throw Pillows",
@@ -542,13 +521,6 @@ export const products: readonly Product[] = [
     price: "$25",
     category: "bedroom",
     asin: "B00LV4W1JM",
-    featured: false,
-  },
-  {
-    name: "Waffle Bath Rug",
-    price: "$20",
-    category: "bathroom",
-    asin: "B0DQ1LXY8L",
     featured: false,
   },
 ] as const;
