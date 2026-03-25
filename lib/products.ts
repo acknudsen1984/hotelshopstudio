@@ -271,7 +271,7 @@ export const products: readonly Product[] = [
     featured: false,
   },
   {
-    name: "Ceramic Candle",
+    name: "Fig Leaf & Lemon Ceramic Candle",
     price: "$40",
     category: "bedroom",
     asin: "B0DJG6RPWV",
