@@ -156,13 +156,7 @@ export const products: readonly Product[] = [
     asin: "B0FHJXZ1WG",
     featured: true,
   },
-  {
-    name: "Calcite Spoon Rest",
-    price: "$44",
-    category: "kitchen",
-    asin: "B0977L9VSZ",
-    featured: true,
-  },
+
   {
     name: "Fruit Bowl",
     price: "$40",
@@ -170,20 +164,7 @@ export const products: readonly Product[] = [
     asin: "B0D382TXK1",
     featured: false,
   },
-  {
-    name: "Dish Towels",
-    price: "$29",
-    category: "kitchen",
-    asin: "B09SKJ9FPQ",
-    featured: false,
-  },
-  {
-    name: "Trivets",
-    price: "$15",
-    category: "kitchen",
-    asin: "B086HX2M8L",
-    featured: false,
-  },
+
   {
     name: "Clean Dirty Sign",
     price: "$37",
@@ -513,27 +494,7 @@ export const products: readonly Product[] = [
     asin: "B0BWXW7B47",
     featured: false,
   },
-  {
-    name: "Calcite Spoon Rest",
-    price: "$20",
-    category: "kitchen",
-    asin: "B0FX2K56VC",
-    featured: false,
-  },
-  {
-    name: "Dish Towels",
-    price: "$20",
-    category: "kitchen",
-    asin: "B01AW5QANS",
-    featured: false,
-  },
-  {
-    name: "Trivets",
-    price: "$15",
-    category: "kitchen",
-    asin: "B0FHJ622YN",
-    featured: false,
-  },
+
   {
     name: "Throw Pillows",
     price: "$20",
