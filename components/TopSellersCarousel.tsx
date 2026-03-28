@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { Product, getProductUrl } from '@/lib/products';
+import { Product, getProductUrl, getProductImage } from '@/lib/products';
 
 interface TopSellersCarouselProps {
   products: Product[];
@@ -111,7 +111,7 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
                   <div 
                     className="aspect-square overflow-hidden rounded-lg bg-cover bg-center mb-4 group-hover:scale-105 transition-transform duration-300"
                     style={{
-                      backgroundImage: `url('${product.image}')`,
+                      backgroundImage: `url('${getProductImage(product)}')`,
                       backgroundColor: '#E8DFD7'
                     }}
                   />
