@@ -4,6 +4,7 @@ export type Product = {
   readonly category: string;
   readonly asin: string;
   readonly featured: boolean;
+  readonly image?: string;
 };
 
 export const AFFILIATE_TAG = "hotelshop-20";
