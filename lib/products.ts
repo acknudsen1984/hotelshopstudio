@@ -9,20 +9,42 @@ export type Product = {
 
 export const AFFILIATE_TAG = "hotelshop-20";
 
-// Placeholder image generator (use unsplash/placeholder service)
+// Placeholder image generator using unsplash
+const categoryImages: Record<string, string[]> = {
+  bathroom: [
+    "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1584622181054-ca0e8135cf17?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1595909952054-b51ef97b64f0?w=500&h=500&fit=crop",
+  ],
+  bedroom: [
+    "https://images.unsplash.com/photo-1540932239986-310128078ceb?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1505693314967-2d71bcdd2724?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1631049307038-da0ec36d9c46?w=500&h=500&fit=crop",
+  ],
+  kitchen: [
+    "https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=500&h=500&fit=crop",
+  ],
+  decor: [
+    "https://images.unsplash.com/photo-1609022615485-e21b58d17d40?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop",
+  ],
+  "home-essentials": [
+    "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=500&fit=crop",
+    "https://images.unsplash.com/photo-1585399781437-d3023142da6b?w=500&h=500&fit=crop",
+  ],
+};
+
 export function getProductImage(product: Product): string {
   if (product.image) return product.image;
   
-  // Generate a consistent placeholder based on category
-  const categoryImages: Record<string, string> = {
-    bathroom: `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`,
-    bedroom: `https://images.unsplash.com/photo-1540932239986-310128078ceb?w=400&h=400&fit=crop`,
-    kitchen: `https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400&h=400&fit=crop`,
-    decor: `https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400&h=400&fit=crop`,
-    "home-essentials": `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`,
-  };
-  
-  return categoryImages[product.category] || `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`;
+  const imgs = categoryImages[product.category] || categoryImages.bathroom;
+  // Use product name hash to pick consistent image
+  const hash = product.name.charCodeAt(0) + product.name.charCodeAt(product.name.length - 1);
+  return imgs[hash % imgs.length];
 }
 
 export const products: readonly Product[] = [

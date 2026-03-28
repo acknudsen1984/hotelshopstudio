@@ -108,24 +108,13 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
                   </div>
 
                   {/* Product image */}
-                  <div className="aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-cream to-warm-beige mb-4 flex items-center justify-center">
-                    <div className="text-center text-warm-gray/40">
-                      <svg
-                        className="w-16 h-16 mx-auto mb-2 opacity-30"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1}
-                          d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5zm10.5-11.25h.008v.008h-.008v-.008zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0z"
-                        />
-                      </svg>
-                      <p className="text-xs">Image</p>
-                    </div>
-                  </div>
+                  <div 
+                    className="aspect-square overflow-hidden rounded-lg bg-cover bg-center mb-4 group-hover:scale-105 transition-transform duration-300"
+                    style={{
+                      backgroundImage: `url('${product.image}')`,
+                      backgroundColor: '#E8DFD7'
+                    }}
+                  />
 
                   {/* Product info */}
                   <div className="space-y-2">
