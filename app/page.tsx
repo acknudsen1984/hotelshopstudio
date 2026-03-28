@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import CategoryNav from "@/components/CategoryNav";
 import ProductCard from "@/components/ProductCard";
 import SubscribeSection from "@/components/SubscribeSection";
+import TopSellersCarousel from "@/components/TopSellersCarousel";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
@@ -17,30 +18,8 @@ export default function Home() {
         {/* ───── Hero Section ───── */}
         <Hero />
 
-        {/* ───── Featured Products ───── */}
-        <section className="bg-cream border-b border-warm-beige/40">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 lg:py-32">
-            {/* Section header */}
-            <div className="mb-12 sm:mb-16 text-center">
-              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
-                Editor&apos;s Picks
-              </p>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
-                Featured Finds
-              </h2>
-            </div>
-
-            {/* Product grid — 3-4 cols desktop, 2 mobile */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4">
-              {featured.slice(0, 8).map((product, i) => (
-                <ProductCard 
-                  key={`${product.category}-${product.name}-${i}`} 
-                  product={product} 
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ───── Top Sellers Carousel ───── */}
+        <TopSellersCarousel products={featured} />
 
         {/* ───── Category Navigation ───── */}
         <CategoryNav />
