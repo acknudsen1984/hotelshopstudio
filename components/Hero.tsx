@@ -1,51 +1,91 @@
 "use client";
 
-import EmailSignup from "./EmailSignup";
+import { useState, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Carousel from "./Carousel";
+import { HERO_SLIDES } from "@/lib/hero-data";
 
 export default function Hero() {
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0, 1, 2]));
+
+  const handleSlideChange = useCallback((index: number) => {
+    // Pre-load adjacent slides
+    setLoadedImages((prev) => {
+      const next = new Set(prev);
+      next.add(index);
+      next.add((index + 1) % HERO_SLIDES.length);
+      if (index > 0) next.add(index - 1);
+      return next;
+    });
+  }, []);
+
   return (
-    <section className="relative w-full min-h-[400px] sm:min-h-[450px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-cream via-off-white to-warm-beige">
-      {/* Decorative background elements */}
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-rose/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-taupe/5 blur-3xl" />
-      </div>
+    <section className="relative w-full bg-[#F5F3F0]">
+      <Carousel
+        showArrows
+        showDots
+        autoPlay
+        autoPlayInterval={6000}
+        loop
+        onSlideChange={handleSlideChange}
+        className="group"
+      >
+        {HERO_SLIDES.map((slide, i) => (
+          <div key={slide.id} className="relative w-full">
+            {/* Image container — large proportions */}
+            <div className="relative w-full aspect-[4/3] sm:aspect-[16/8] lg:aspect-[16/7] overflow-hidden">
+              {(loadedImages.has(i) || i <= 1) && (
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                  priority={i === 0}
+                  quality={85}
+                />
+              )}
 
-      {/* Content container */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-20 lg:py-24 text-center">
-        {/* Eyebrow text */}
-        <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3 sm:mb-4">
-          Luxury Home Essentials
-        </p>
+              {/* Dark gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
 
-        {/* Main headline */}
-        <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight sm:leading-[1.1] lg:leading-[1.08] text-charcoal font-light mb-4 sm:mb-6 max-w-3xl mx-auto">
-          The boutique hotel experience,{" "}
-          <span className="italic text-rose">curated for your home</span>
-        </h1>
+              {/* Slide content overlay */}
+              <div className="absolute inset-0 flex items-end">
+                <div className="w-full max-w-[1200px] mx-auto px-6 pb-12 sm:pb-16 lg:pb-20">
+                  <div className="max-w-xl">
+                    {/* Slide number */}
+                    <span className="inline-block font-display text-5xl sm:text-6xl lg:text-7xl text-white/30 font-light mb-2 leading-none">
+                      {slide.number}
+                    </span>
 
-        {/* Subheadline */}
-        <p className="text-sm sm:text-base text-muted max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 font-light">
-          Every item chosen for quality, function, and longevity. Hotel-quality pieces that transform everyday spaces into sanctuaries.
-        </p>
+                    {/* Title */}
+                    <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-white font-light leading-[1.1] mb-3">
+                      {slide.title}
+                    </h2>
 
-        {/* Email signup */}
-        <div className="flex justify-center">
-          <div className="w-full sm:max-w-md">
-            <p className="text-xs text-muted tracking-widest uppercase font-sans mb-3 font-light">
-              New curated finds weekly
-            </p>
-            <EmailSignup compact />
+                    {/* Subtitle */}
+                    <p className="text-sm sm:text-base text-white/70 font-sans font-light mb-6 max-w-md">
+                      {slide.subtitle}
+                    </p>
+
+                    {/* CTA */}
+                    <Link
+                      href={`/shop/${slide.category}`}
+                      className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-white font-sans font-normal border-b border-white/40 pb-1 hover:border-white transition-colors duration-300"
+                    >
+                      Shop {slide.category.replace("-", " ")}
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="hidden sm:flex justify-center mt-8 sm:mt-12 animate-bounce opacity-40">
-          <svg className="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-      </div>
+        ))}
+      </Carousel>
     </section>
   );
 }

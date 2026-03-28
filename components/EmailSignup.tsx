@@ -18,13 +18,10 @@ export default function EmailSignup({ compact = false, dark = false }: EmailSign
     setStatus("loading");
 
     try {
-      const res = await fetch("https://api.convertkit.com/v3/forms/9222742/subscribe", {
+      const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          api_key: "rghu7Ah3Kdn597mUlyfqew",
-          email: email.trim(),
-        }),
+        body: JSON.stringify({ email: email.trim() }),
       });
 
       if (!res.ok) throw new Error("Subscription failed");
@@ -37,21 +34,16 @@ export default function EmailSignup({ compact = false, dark = false }: EmailSign
 
   if (status === "success") {
     return (
-      <p className={`text-sm font-sans font-medium ${dark ? "text-rose-light" : "text-rose"}`}>
+      <p className={`text-sm font-sans font-medium ${dark ? "text-white/80" : "text-[#A0978E]"}`}>
         Perfect. Check your email for new finds.
       </p>
     );
   }
 
-  const inputBg = dark ? "bg-charcoal/10" : "bg-off-white";
-  const inputBorder = dark ? "border-warm-beige/40" : "border-warm-beige";
-  const inputText = dark ? "text-white placeholder:text-warm-beige/60" : "text-charcoal placeholder:text-muted";
-  const buttonBg = dark ? "bg-rose hover:bg-rose-light text-charcoal" : "bg-charcoal hover:bg-charcoal-dark text-white";
-
   return (
     <form
       onSubmit={handleSubmit}
-      className={`flex flex-col gap-3 sm:gap-4 sm:flex-row ${compact ? "w-full" : ""}`}
+      className={`flex flex-col gap-3 sm:flex-row ${compact ? "w-full" : ""}`}
     >
       <input
         type="email"
@@ -59,17 +51,27 @@ export default function EmailSignup({ compact = false, dark = false }: EmailSign
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
-        className={`w-full sm:flex-1 border ${inputBorder} ${inputBg} ${inputText} px-4 sm:px-5 py-3 sm:py-3.5 text-sm font-sans outline-none transition-all duration-300 focus:border-rose focus:ring-1 focus:ring-rose/20 rounded-none`}
+        className={`w-full sm:flex-1 border px-4 py-3 text-sm font-sans outline-none transition-all duration-300 focus:ring-1 rounded-none ${
+          dark
+            ? "bg-white/10 border-white/20 text-white placeholder:text-white/40 focus:border-white/40 focus:ring-white/10"
+            : "bg-white border-[#E5DDD5] text-[#3C3C3C] placeholder:text-[#A0978E] focus:border-[#A0978E] focus:ring-[#A0978E]/20"
+        }`}
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className={`px-6 sm:px-8 py-3 sm:py-3.5 text-xs font-sans font-medium tracking-widest uppercase ${buttonBg} transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-none whitespace-nowrap`}
+        className={`px-6 py-3 text-[11px] font-sans font-medium tracking-[0.15em] uppercase transition-all duration-300 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded-none whitespace-nowrap ${
+          dark
+            ? "bg-white text-[#3C3C3C] hover:bg-white/90"
+            : "bg-[#3C3C3C] text-white hover:bg-[#2B2B2B]"
+        }`}
       >
-        {status === "loading" ? "Subscribing…" : "Subscribe"}
+        {status === "loading" ? "Subscribing..." : "Subscribe"}
       </button>
       {status === "error" && (
-        <p className="text-xs text-rose-light font-sans mt-1">Please try again.</p>
+        <p className={`text-xs font-sans mt-1 ${dark ? "text-white/60" : "text-[#D4A5A5]"}`}>
+          Please try again.
+        </p>
       )}
     </form>
   );

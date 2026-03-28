@@ -1,69 +1,144 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import TopBar from "./TopBar";
 
 const NAV_LINKS = [
-  { label: "Hotel Bathroom", href: "/shop/bathroom" },
-  { label: "Hotel Kitchen", href: "/shop/kitchen" },
-  { label: "Hotel Bedroom", href: "/shop/bedroom" },
+  { label: "Bathroom", href: "/shop/bathroom" },
+  { label: "Kitchen", href: "/shop/kitchen" },
+  { label: "Bedroom", href: "/shop/bedroom" },
   { label: "Home Essentials", href: "/shop/home-essentials" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 60);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   return (
-    <nav className="w-full border-b border-warm-beige bg-[#FAF7F2] sticky top-0 z-50 shadow-sm">
-      <div className="mx-auto max-w-6xl flex items-center justify-between px-5 py-5">
-        {/* Logo */}
-        <Link href="/" className="flex items-center flex-shrink-0">
-          <span className="font-display text-xl sm:text-2xl text-charcoal font-light tracking-tight">
-            Hotel Shop
-          </span>
-        </Link>
-
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-10 text-xs font-sans font-light text-muted tracking-widest uppercase">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-rose transition-colors duration-300"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile hamburger */}
-        <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span className={`block w-5 h-0.5 bg-charcoal transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-charcoal transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-charcoal transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-        </button>
+    <header className="sticky top-0 z-50">
+      {/* Top bar — hidden on scroll */}
+      <div
+        className={`transition-all duration-300 overflow-hidden ${
+          scrolled ? "max-h-0 opacity-0" : "max-h-16 opacity-100"
+        }`}
+      >
+        <TopBar />
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden border-t border-warm-beige bg-off-white px-5 py-6 flex flex-col gap-5">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-xs font-sans font-light text-muted tracking-widest uppercase hover:text-rose transition-colors duration-300"
-              onClick={() => setMenuOpen(false)}
+      {/* Main navigation */}
+      <nav className="w-full bg-[#F5F3F0] border-b border-[#E5DDD5]">
+        <div className="mx-auto max-w-[1200px] px-6 flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <span className="font-display text-2xl sm:text-[28px] text-[#3C3C3C] font-light tracking-tight">
+              Hotel Shop
+            </span>
+          </Link>
+
+          {/* Desktop nav links */}
+          <div className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-[11px] font-sans font-normal text-[#A0978E] tracking-[0.15em] uppercase hover:text-[#3C3C3C] transition-colors duration-300"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop search icon */}
+          <div className="hidden lg:flex items-center">
+            <button
+              className="p-2 text-[#A0978E] hover:text-[#3C3C3C] transition-colors"
+              aria-label="Search"
             >
-              {link.label}
-            </Link>
-          ))}
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            className="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span
+              className={`block w-5 h-[1.5px] bg-[#3C3C3C] transition-all duration-300 origin-center ${
+                menuOpen ? "rotate-45 translate-y-[6.5px]" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[1.5px] bg-[#3C3C3C] transition-all duration-300 ${
+                menuOpen ? "opacity-0 scale-0" : ""
+              }`}
+            />
+            <span
+              className={`block w-5 h-[1.5px] bg-[#3C3C3C] transition-all duration-300 origin-center ${
+                menuOpen ? "-rotate-45 -translate-y-[6.5px]" : ""
+              }`}
+            />
+          </button>
         </div>
-      )}
-    </nav>
+
+        {/* Mobile menu overlay */}
+        <div
+          className={`lg:hidden fixed inset-0 top-16 bg-[#F5F3F0] z-40 transition-all duration-300 ${
+            menuOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4 pointer-events-none"
+          }`}
+        >
+          <div className="flex flex-col px-8 pt-8 pb-12 gap-1">
+            {NAV_LINKS.map((link, i) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="py-4 border-b border-[#E5DDD5] text-lg font-display font-light text-[#3C3C3C] hover:text-[#A0978E] transition-colors"
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  animationDelay: `${i * 50}ms`,
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Mobile social links */}
+            <div className="flex items-center gap-6 mt-10">
+              {["Instagram", "Pinterest", "YouTube", "TikTok"].map((platform) => (
+                <span
+                  key={platform}
+                  className="text-[11px] tracking-widest uppercase text-[#A0978E] font-light"
+                >
+                  {platform}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }
