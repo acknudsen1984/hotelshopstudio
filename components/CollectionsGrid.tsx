@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getProductImage, products } from '@/lib/products';
 
 interface CollectionCard {
   id: string;
@@ -6,6 +7,7 @@ interface CollectionCard {
   description: string;
   icon: string;
   href: string;
+  category: string;
 }
 
 const collections: CollectionCard[] = [
@@ -15,6 +17,7 @@ const collections: CollectionCard[] = [
     description: 'Spa-inspired essentials for luxurious daily rituals. From plush towels to elegant organizers.',
     icon: '🛁',
     href: '/shop/bathroom',
+    category: 'bathroom',
   },
   {
     id: 'kitchen',
@@ -22,6 +25,7 @@ const collections: CollectionCard[] = [
     description: 'Functional pieces that elevate everyday cooking and dining. Quality materials built to last.',
     icon: '🍽️',
     href: '/shop/kitchen',
+    category: 'kitchen',
   },
   {
     id: 'bedroom',
@@ -29,6 +33,7 @@ const collections: CollectionCard[] = [
     description: 'Serene sanctuaries with high-quality bedding, lighting, and storage for rest and renewal.',
     icon: '🛏️',
     href: '/shop/bedroom',
+    category: 'bedroom',
   },
   {
     id: 'essentials',
@@ -36,6 +41,7 @@ const collections: CollectionCard[] = [
     description: 'Thoughtful accents and organizational pieces that bring luxury touches to every room.',
     icon: '✨',
     href: '/shop/home-essentials',
+    category: 'home-essentials',
   },
 ];
 
@@ -61,12 +67,14 @@ export default function CollectionsGrid() {
               href={collection.href}
               className="group flex flex-col h-full"
             >
-              {/* Card image placeholder */}
-              <div className="aspect-square bg-gradient-to-br from-warm-beige/50 to-cream rounded-lg mb-6 flex items-center justify-center border border-warm-beige/60 group-hover:border-rose/40 group-hover:bg-rose/5 transition-all duration-300 overflow-hidden">
-                <span className="font-display text-5xl sm:text-6xl opacity-40 group-hover:opacity-60 transition-opacity duration-300 scale-100 group-hover:scale-110 transform transition-transform">
-                  {collection.icon}
-                </span>
-              </div>
+              {/* Card image */}
+              <div 
+                className="aspect-square rounded-lg mb-6 border border-warm-beige/60 group-hover:border-rose/40 transition-all duration-300 overflow-hidden bg-cover bg-center group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('${getProductImage(products.find(p => p.category === collection.category) || products[0])}')`,
+                  backgroundColor: '#E8DFD7'
+                }}
+              />
 
               {/* Card content */}
               <div className="flex-1 flex flex-col">
