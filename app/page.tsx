@@ -1,22 +1,5 @@
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import InstagramSection from "@/components/InstagramSection";
-
 export default function Home() {
-  return (
-    <>
-      <Nav />
-
-      <main className="flex-1">
-        {/* Hero Carousel — 9 slides, numbered 01-09 */}
-        <Hero />
-
-        {/* Instagram Section — 4 cards, split layout */}
-        <InstagramSection />
-      </main>
-
-      <Footer />
-    </>
-  );
+  return <main className="min-h-screen bg-[#FAF7F2] flex items-center justify-center font-serif text-[#3D3D3D]">
+    <p>Hotel Shop — Rebuilding...</p>
+  </main>;
 }
