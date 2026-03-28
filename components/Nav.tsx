@@ -15,7 +15,7 @@ export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="w-full border-b border-warm-beige bg-cream sticky top-0 z-50">
+    <nav className="w-full border-b border-warm-beige bg-[#FAF7F2] sticky top-0 z-50 shadow-sm">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-5 py-5">
         {/* Logo */}
         <Link href="/" className="flex items-center flex-shrink-0">
