@@ -9,6 +9,22 @@ export type Product = {
 
 export const AFFILIATE_TAG = "hotelshop-20";
 
+// Placeholder image generator (use unsplash/placeholder service)
+export function getProductImage(product: Product): string {
+  if (product.image) return product.image;
+  
+  // Generate a consistent placeholder based on category
+  const categoryImages: Record<string, string> = {
+    bathroom: `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`,
+    bedroom: `https://images.unsplash.com/photo-1540932239986-310128078ceb?w=400&h=400&fit=crop`,
+    kitchen: `https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400&h=400&fit=crop`,
+    decor: `https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400&h=400&fit=crop`,
+    "home-essentials": `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`,
+  };
+  
+  return categoryImages[product.category] || `https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=400&fit=crop`;
+}
+
 export const products: readonly Product[] = [
   {
     name: "Wood Stool",
