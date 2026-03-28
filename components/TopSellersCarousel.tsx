@@ -90,10 +90,12 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
             style={{ scrollBehavior: 'smooth' }}
           >
             <div className="flex gap-6 pb-4 px-2">
-              {products.slice(0, 9).map((product, index) => (
+              {products.slice(0, 9).map((product, index) => {
+                const href = product.affiliateLink || '#';
+                return (
                 <Link
                   key={`${product.category}-${product.name}-${index}`}
-                  href={product.affiliateLink}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-shrink-0 group"
@@ -127,7 +129,8 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
                     </p>
                   </div>
                 </Link>
-              ))}
+                );
+              })}
             </div>
           </div>
 
