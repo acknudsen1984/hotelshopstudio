@@ -14,7 +14,7 @@ export default function Hero() {
       {/* Content container */}
       <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-20 lg:py-24 text-center">
         {/* Eyebrow text */}
-        <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-6 sm:mb-8">
+        <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3 sm:mb-4">
           Luxury Home Essentials
         </p>
 
@@ -31,11 +31,11 @@ export default function Hero() {
 
         {/* Email signup */}
         <div className="flex justify-center">
-          <div className="w-full sm:max-w-2xl">
-            <p className="text-xs text-muted tracking-widest uppercase font-sans mb-4 font-light">
+          <div className="w-full sm:max-w-md">
+            <p className="text-xs text-muted tracking-widest uppercase font-sans mb-3 font-light">
               New curated finds weekly
             </p>
-            <EmailSignup />
+            <EmailSignup compact />
           </div>
         </div>
 
