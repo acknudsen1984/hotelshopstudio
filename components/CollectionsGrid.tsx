@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 import { getProductImage, products } from '@/lib/products';
 
 interface CollectionCard {
@@ -46,6 +50,12 @@ const collections: CollectionCard[] = [
 ];
 
 export default function CollectionsGrid() {
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
+
+  const handleImageError = (collectionId: string) => {
+    setImageErrors(prev => new Set(prev).add(collectionId));
+  };
+
   return (
     <section className="bg-cream py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-5">
@@ -61,48 +71,65 @@ export default function CollectionsGrid() {
 
         {/* Collections grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
-          {collections.map((collection) => (
-            <Link
-              key={collection.id}
-              href={collection.href}
-              className="group flex flex-col h-full"
-            >
-              {/* Card image */}
-              <div 
-                className="aspect-square rounded-lg mb-6 border border-warm-beige/60 group-hover:border-rose/40 transition-all duration-300 overflow-hidden bg-cover bg-center group-hover:scale-105"
-                style={{
-                  backgroundImage: `url('${getProductImage(products.find(p => p.category === collection.category) || products[0])}')`,
-                  backgroundColor: '#E8DFD7'
-                }}
-              />
+          {collections.map((collection) => {
+            const productForImage = products.find(p => p.category === collection.category) || products[0];
+            const imgUrl = getProductImage(productForImage);
+            const hasError = imageErrors.has(collection.id);
 
-              {/* Card content */}
-              <div className="flex-1 flex flex-col">
-                <h3 className="font-display text-2xl sm:text-3xl text-charcoal font-light mb-2 group-hover:text-rose transition-colors duration-300">
-                  {collection.title}
-                </h3>
-                <p className="text-sm sm:text-base text-muted font-light mb-6 flex-1">
-                  {collection.description}
-                </p>
-                <div className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal group-hover:text-rose transition-colors duration-300">
-                  <span>Explore Collection</span>
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
+            return (
+              <Link
+                key={collection.id}
+                href={collection.href}
+                className="group flex flex-col h-full"
+              >
+                {/* Card image */}
+                <div className="aspect-square rounded-lg mb-6 border border-warm-beige/60 group-hover:border-rose/40 transition-all duration-300 overflow-hidden group-hover:scale-105 bg-off-white relative">
+                  {!hasError ? (
+                    <Image
+                      src={imgUrl}
+                      alt={collection.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      onError={() => handleImageError(collection.id)}
                     />
-                  </svg>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-warm-beige/20 to-cream/20">
+                      <span className="text-muted-light/50 text-sm text-center px-4 uppercase font-light">
+                        {collection.title}
+                      </span>
+                    </div>
+                  )}
                 </div>
-              </div>
-            </Link>
-          ))}
+
+                {/* Card content */}
+                <div className="flex-1 flex flex-col">
+                  <h3 className="font-display text-2xl sm:text-3xl text-charcoal font-light mb-2 group-hover:text-rose transition-colors duration-300">
+                    {collection.title}
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted font-light mb-6 flex-1">
+                    {collection.description}
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal group-hover:text-rose transition-colors duration-300">
+                    <span>Explore Collection</span>
+                    <svg
+                      className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

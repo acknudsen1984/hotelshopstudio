@@ -8,15 +8,10 @@ type ProductCardProps = {
   readonly product: Product;
 };
 
-// ASINs that have a clean PNG with transparent background (bg-removed)
-const PNG_ASINS = new Set<string>([]);
-
 export default function ProductCard({ product }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
 
-  const ext = PNG_ASINS.has(product.asin) ? "png" : "jpg";
-  const localImageUrl = `/products/${product.asin}.${ext}`;
-  const imageUrl = product.image || getProductImage(product) || localImageUrl;
+  const imageUrl = product.image || getProductImage(product);
 
   return (
     <div className="group flex flex-col h-full">

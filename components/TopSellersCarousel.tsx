@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Product, getProductUrl, getProductImage } from '@/lib/products';
 
 interface TopSellersCarouselProps {
@@ -12,6 +13,7 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
 
   const checkScroll = () => {
     const container = scrollContainerRef.current;
@@ -33,6 +35,10 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
       });
       setTimeout(checkScroll, 500);
     }
+  };
+
+  const handleImageError = (productKey: string) => {
+    setImageErrors(prev => new Set(prev).add(productKey));
   };
 
   React.useEffect(() => {
@@ -91,41 +97,56 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
             <div className="flex gap-6 pb-4 px-2">
               {products.slice(0, 9).map((product, index) => {
                 const href = getProductUrl(product.asin);
+                const productKey = `${product.category}-${product.name}-${index}`;
+                const imgUrl = getProductImage(product);
+                const hasError = imageErrors.has(productKey);
+
                 return (
-                <Link
-                  key={`${product.category}-${product.name}-${index}`}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 group relative"
-                  style={{ width: '240px' }}
-                >
-                  {/* Item number badge */}
-                  <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full shadow-sm">
-                    <span className="text-sm font-display text-rose font-light">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
+                  <Link
+                    key={productKey}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-shrink-0 group relative"
+                    style={{ width: '240px' }}
+                  >
+                    {/* Item number badge */}
+                    <div className="absolute top-4 left-4 bg-white/90 px-3 py-1 rounded-full shadow-sm z-5">
+                      <span className="text-sm font-display text-rose font-light">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
 
-                  {/* Product image */}
-                  <div 
-                    className="aspect-square overflow-hidden rounded-lg bg-cover bg-center mb-4 group-hover:scale-105 transition-transform duration-300"
-                    style={{
-                      backgroundImage: `url('${getProductImage(product)}')`,
-                      backgroundColor: '#E8DFD7'
-                    }}
-                  />
+                    {/* Product image */}
+                    <div className="aspect-square overflow-hidden rounded-lg mb-4 group-hover:scale-105 transition-transform duration-300 bg-off-white border border-warm-beige/40 relative">
+                      {!hasError ? (
+                        <Image
+                          src={imgUrl}
+                          alt={product.name}
+                          fill
+                          className="object-contain p-4"
+                          sizes="240px"
+                          onError={() => handleImageError(productKey)}
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-warm-beige/20 to-cream/20">
+                          <span className="text-muted-light/50 text-xs text-center px-3 uppercase font-light">
+                            {product.category.replace('-', ' ')}
+                          </span>
+                        </div>
+                      )}
+                    </div>
 
-                  {/* Product info */}
-                  <div className="space-y-2">
-                    <h3 className="font-display text-sm text-charcoal font-light line-clamp-2 group-hover:text-rose transition-colors">
-                      {product.name}
-                    </h3>
-                    <p className="text-xs text-warm-gray font-sans">
-                      ${product.price}
-                    </p>
-                  </div>
-                </Link>
+                    {/* Product info */}
+                    <div className="space-y-2">
+                      <h3 className="font-display text-sm text-charcoal font-light line-clamp-2 group-hover:text-rose transition-colors">
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-warm-gray font-sans">
+                        {product.price}
+                      </p>
+                    </div>
+                  </Link>
                 );
               })}
             </div>
