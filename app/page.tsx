@@ -1,9 +1,10 @@
-import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import EmailSignup from "@/components/EmailSignup";
+import Hero from "@/components/Hero";
+import CategoryNav from "@/components/CategoryNav";
 import ProductCard from "@/components/ProductCard";
-import { getFeaturedProducts, ROOMS } from "@/lib/products";
+import SubscribeSection from "@/components/SubscribeSection";
+import { getFeaturedProducts } from "@/lib/products";
 
 export default function Home() {
   const featured = getFeaturedProducts();
@@ -13,112 +14,166 @@ export default function Home() {
       <Nav />
 
       <main className="flex-1">
-
-        {/* ───── Hero ───── */}
-        <section className="bg-white border-b border-border">
-          <div className="mx-auto max-w-6xl px-5 py-24 sm:py-32 lg:py-40">
-            <div className="max-w-2xl">
-              <p className="text-xs text-brass tracking-widest uppercase font-sans mb-6">
-                Curated Hotel Essentials
-              </p>
-              <h1 className="font-display font-light text-5xl leading-[1.08] sm:text-6xl lg:text-7xl text-charcoal">
-                The boutique hotel edit,{" "}
-                <em className="italic text-brass">for your home</em>
-              </h1>
-              <p className="mt-6 text-muted text-base sm:text-lg leading-relaxed font-sans max-w-lg">
-                Every item chosen for quality, function, and longevity — so your everyday
-                spaces feel considered rather than styled.
-              </p>
-
-              {/* Above-fold email signup */}
-              <div className="mt-10">
-                <p className="text-xs text-muted tracking-widest uppercase font-sans mb-4">
-                  New finds every week
-                </p>
-                <EmailSignup />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ───── Shop by Category ───── */}
-        <section className="bg-off-white border-b border-border">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20">
-            <p className="text-xs text-muted tracking-widest uppercase font-sans mb-10 text-center">
-              Shop by Room
-            </p>
-            <div className="grid grid-cols-2 gap-px sm:grid-cols-4 bg-border">
-              {ROOMS.map((room) => (
-                <Link
-                  key={room.slug}
-                  href={`/shop/${room.slug}`}
-                  className="group flex flex-col items-center justify-center bg-off-white px-6 py-12 sm:py-16 hover:bg-white transition-colors duration-200"
-                >
-                  <span className="font-display text-lg sm:text-xl text-charcoal font-light group-hover:text-brass transition-colors duration-200 text-center leading-snug">
-                    {room.label}
-                  </span>
-                  <span className="mt-2 text-xs text-muted font-sans tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                    Browse →
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ───── Hero Section ───── */}
+        <Hero />
 
         {/* ───── Featured Products ───── */}
-        <section className="bg-white">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
-            <div className="flex items-baseline justify-between mb-12">
-              <div>
-                <p className="text-xs text-brass tracking-widest uppercase font-sans mb-2">
-                  Editor&apos;s Picks
-                </p>
-                <h2 className="font-display text-3xl sm:text-4xl text-charcoal font-light">
-                  Featured Finds
-                </h2>
-              </div>
+        <section className="bg-cream border-b border-warm-beige/40">
+          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 lg:py-32">
+            {/* Section header */}
+            <div className="mb-12 sm:mb-16 text-center">
+              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
+                Editor&apos;s Picks
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
+                Featured Finds
+              </h2>
             </div>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 sm:gap-y-16">
-              {featured.map((product, i) => (
-                <ProductCard key={`${product.category}-${product.name}-${i}`} product={product} />
+
+            {/* Product grid — 3-4 cols desktop, 2 mobile */}
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4">
+              {featured.slice(0, 8).map((product, i) => (
+                <ProductCard 
+                  key={`${product.category}-${product.name}-${i}`} 
+                  product={product} 
+                />
               ))}
             </div>
           </div>
         </section>
 
-        {/* ───── Brand statement ───── */}
-        <section className="bg-off-white border-t border-border border-b">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 text-center">
-            <p className="font-display text-2xl sm:text-3xl md:text-4xl text-charcoal font-light leading-relaxed max-w-3xl mx-auto">
-              &ldquo;Every item is chosen for quality, function, and longevity, with the goal of
-              making everyday spaces feel{" "}
-              <em className="italic text-brass">considered</em> rather than styled.&rdquo;
-            </p>
-            <Link
-              href="/about"
-              className="mt-8 inline-block text-xs text-muted font-sans tracking-widest uppercase hover:text-brass transition-colors"
-            >
-              About Hotel Shop →
-            </Link>
-          </div>
-        </section>
+        {/* ───── Category Navigation ───── */}
+        <CategoryNav />
 
-        {/* ───── Footer email CTA ───── */}
-        <section className="bg-white border-t border-border">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-20 text-center">
-            <h2 className="font-display text-3xl sm:text-4xl text-charcoal font-light mb-3">
-              New finds, every week
-            </h2>
-            <p className="text-muted text-sm font-sans max-w-md mx-auto mb-8">
-              Hotel-quality pieces, curated and linked directly to Amazon.
-            </p>
-            <div className="flex justify-center">
-              <EmailSignup />
+        {/* ───── Full Product Grid ───── */}
+        <section className="bg-cream">
+          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 lg:py-32">
+            {/* Section header */}
+            <div className="mb-12 sm:mb-16 text-center">
+              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
+                Complete Collection
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
+                All Curated Pieces
+              </h2>
+            </div>
+
+            {/* Product grid — all 40 products */}
+            <div className="grid grid-cols-2 gap-6 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4">
+              {featured.map((product, i) => (
+                <ProductCard 
+                  key={`featured-${product.category}-${product.name}-${i}`} 
+                  product={product} 
+                />
+              ))}
             </div>
           </div>
         </section>
 
+        {/* ───── Brand Philosophy ───── */}
+        <section className="bg-off-white border-y border-warm-beige/40 py-16 sm:py-24 lg:py-32">
+          <div className="mx-auto max-w-4xl px-5 text-center">
+            <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-charcoal font-light leading-relaxed mb-8">
+              &ldquo;Every item is chosen for quality, function, and longevity. 
+              The goal is to make everyday spaces feel{" "}
+              <em className="italic text-rose">considered</em> rather than styled.&rdquo;
+            </p>
+            <p className="text-sm text-muted font-light">
+              — Hotel Shop Studio
+            </p>
+          </div>
+        </section>
+
+        {/* ───── Subscribe CTA ───── */}
+        <SubscribeSection />
+
+        {/* ───── Featured Collections ───── */}
+        <section className="bg-cream py-16 sm:py-24 lg:py-32">
+          <div className="mx-auto max-w-6xl px-5">
+            <div className="text-center mb-12 sm:mb-16">
+              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
+                Shop by Category
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl text-charcoal font-light">
+                Curated by Room
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+              {/* Bathroom collection */}
+              <div className="flex flex-col">
+                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
+                  <span className="font-display text-4xl text-charcoal/20">🛁</span>
+                </div>
+                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Bathroom</h3>
+                <p className="text-sm text-muted font-light mb-4">
+                  Spa-inspired essentials for luxurious daily rituals. From plush towels to elegant organizers.
+                </p>
+                <a 
+                  href="/shop/bathroom"
+                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
+                >
+                  <span>Explore Collection</span>
+                  <span>→</span>
+                </a>
+              </div>
+
+              {/* Kitchen collection */}
+              <div className="flex flex-col">
+                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
+                  <span className="font-display text-4xl text-charcoal/20">🍽️</span>
+                </div>
+                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Kitchen</h3>
+                <p className="text-sm text-muted font-light mb-4">
+                  Functional pieces that elevate everyday cooking and dining. Quality materials built to last.
+                </p>
+                <a 
+                  href="/shop/kitchen"
+                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
+                >
+                  <span>Explore Collection</span>
+                  <span>→</span>
+                </a>
+              </div>
+
+              {/* Bedroom collection */}
+              <div className="flex flex-col">
+                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
+                  <span className="font-display text-4xl text-charcoal/20">🛏️</span>
+                </div>
+                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Bedroom</h3>
+                <p className="text-sm text-muted font-light mb-4">
+                  Serene sanctuaries with high-quality bedding, lighting, and storage solutions for rest and renewal.
+                </p>
+                <a 
+                  href="/shop/bedroom"
+                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
+                >
+                  <span>Explore Collection</span>
+                  <span>→</span>
+                </a>
+              </div>
+
+              {/* Home essentials collection */}
+              <div className="flex flex-col">
+                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
+                  <span className="font-display text-4xl text-charcoal/20">✨</span>
+                </div>
+                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Home Essentials</h3>
+                <p className="text-sm text-muted font-light mb-4">
+                  Thoughtful accents and organizational pieces that bring luxury touches to every room.
+                </p>
+                <a 
+                  href="/shop/home-essentials"
+                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
+                >
+                  <span>Explore Collection</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

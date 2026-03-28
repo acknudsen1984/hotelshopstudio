@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -10,16 +10,21 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const poppins = Poppins({
+  variable: "--font-poppins",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Hotel Shop — The Boutique Hotel Edit, On Amazon",
+  title: "Hotel Shop — Luxury Home Essentials",
   description:
-    "Curated hotel-quality home essentials. Every item chosen for quality, function, and longevity.",
+    "Curated luxury home essentials inspired by 5-star hotel aesthetics. Every item chosen for quality, function, and longevity. Direct Amazon links, no markup.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
 };
 
 export default function RootLayout({
@@ -30,9 +35,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${poppins.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-white text-charcoal">
+      <body className="min-h-screen flex flex-col font-sans bg-cream text-charcoal antialiased">
         {children}
       </body>
     </html>
