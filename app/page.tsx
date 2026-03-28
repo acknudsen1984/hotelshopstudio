@@ -1,14 +1,77 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import CategoryNav from "@/components/CategoryNav";
-import ProductCard from "@/components/ProductCard";
-import SubscribeSection from "@/components/SubscribeSection";
 import TopSellersCarousel from "@/components/TopSellersCarousel";
-import { getFeaturedProducts } from "@/lib/products";
+import ShopTheLook from "@/components/ShopTheLook";
+import BrandStory from "@/components/BrandStory";
+import CollectionsGrid from "@/components/CollectionsGrid";
+import SocialProof from "@/components/SocialProof";
+import ProductGridFull from "@/components/ProductGridFull";
+import SubscribeSection from "@/components/SubscribeSection";
+import { getFeaturedProducts, products } from "@/lib/products";
 
 export default function Home() {
   const featured = getFeaturedProducts();
+
+  // Prepare shop-the-look lifestyle scenes
+  const lifestyleScenes = [
+    {
+      id: "morning-ritual",
+      title: "Morning Ritual",
+      description: "Start your day with spa-quality essentials that make everyday routines feel luxurious.",
+      category: "bathroom",
+      products: [
+        featured.find(p => p.name === "Luxury Waffle Robe") ||
+          { name: "Luxury Waffle Robe", price: "$90", category: "bathroom", asin: "B0DX46HDNM", featured: true },
+        featured.find(p => p.name === "Wood Stool") ||
+          { name: "Wood Stool", price: "$105", category: "bathroom", asin: "B0CTD1S78R", featured: true },
+        featured.find(p => p.name === "Incense") ||
+          { name: "Incense", price: "$50", category: "bathroom", asin: "B0CHSGQZZ5", featured: true },
+      ],
+    },
+    {
+      id: "dinner-table",
+      title: "Dinner Table Setting",
+      description: "Create memorable dining moments with thoughtfully selected kitchen and table pieces.",
+      category: "kitchen",
+      products: [
+        featured.find(p => p.name === "Marble Cutting Board") ||
+          { name: "Marble Cutting Board", price: "$44", category: "kitchen", asin: "B07NC7BRG2", featured: false },
+        featured.find(p => p.name === "Olive Oil Cruet") ||
+          { name: "Olive Oil Cruet", price: "$46", category: "kitchen", asin: "B00T4AOM06", featured: true },
+        featured.find(p => p.name === "Silver Tray") ||
+          { name: "Silver Tray", price: "$33", category: "kitchen", asin: "B09J6C4ZFM", featured: false },
+      ],
+    },
+    {
+      id: "restful-sleep",
+      title: "Restful Sleep Sanctuary",
+      description: "Quality bedding and lighting designed for comfort and tranquil sleep.",
+      category: "bedroom",
+      products: [
+        featured.find(p => p.name === "Table Lamp") ||
+          { name: "Table Lamp", price: "$187", category: "bedroom", asin: "B0CX95Y7YF", featured: true },
+        featured.find(p => p.name === "Waffle Weave Pillowcases") ||
+          { name: "Waffle Weave Pillowcases", price: "$24", category: "bedroom", asin: "B0CFF562SK", featured: true },
+        featured.find(p => p.name === "Linen Euro Shams") ||
+          { name: "Linen Euro Shams", price: "$38", category: "bedroom", asin: "B0917SZRRN", featured: false },
+      ],
+    },
+    {
+      id: "peaceful-spaces",
+      title: "Peaceful Living Spaces",
+      description: "Thoughtful accents and organizational pieces that elevate any room.",
+      category: "home-essentials",
+      products: [
+        featured.find(p => p.name === "Wavy Key Bowl") ||
+          { name: "Wavy Key Bowl", price: "$44", category: "home-essentials", asin: "B0FZD3CJ1L", featured: true },
+        featured.find(p => p.name === "Stone Bookends") ||
+          { name: "Stone Bookends", price: "$36", category: "home-essentials", asin: "B0D9GNFGQC", featured: false },
+        featured.find(p => p.name === "Basket Set of 4") ||
+          { name: "Basket Set of 4", price: "$44", category: "home-essentials", asin: "B0DGL38TXK", featured: false },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -19,140 +82,25 @@ export default function Home() {
         <Hero />
 
         {/* ───── Top Sellers Carousel ───── */}
-        <TopSellersCarousel products={featured} />
+        <TopSellersCarousel products={featured as any[]} />
 
-        {/* ───── Category Navigation ───── */}
-        <CategoryNav />
+        {/* ───── Shop the Look Section ───── */}
+        <ShopTheLook scenes={lifestyleScenes} />
 
-        {/* ───── Full Product Grid ───── */}
-        <section className="bg-cream">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:py-24 lg:py-32">
-            {/* Section header */}
-            <div className="mb-12 sm:mb-16 text-center">
-              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
-                Complete Collection
-              </p>
-              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
-                All Curated Pieces
-              </h2>
-            </div>
+        {/* ───── Brand Story Section ───── */}
+        <BrandStory />
 
-            {/* Product grid — all 40 products */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 sm:grid-cols-3 lg:grid-cols-4">
-              {featured.map((product, i) => (
-                <ProductCard 
-                  key={`featured-${product.category}-${product.name}-${i}`} 
-                  product={product} 
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ───── Collections Grid ───── */}
+        <CollectionsGrid />
 
-        {/* ───── Brand Philosophy ───── */}
-        <section className="bg-off-white border-y border-warm-beige/40 py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-4xl px-5 text-center">
-            <p className="font-display text-2xl sm:text-3xl lg:text-4xl text-charcoal font-light leading-relaxed mb-8">
-              &ldquo;Every item is chosen for quality, function, and longevity. 
-              The goal is to make everyday spaces feel{" "}
-              <em className="italic text-rose">considered</em> rather than styled.&rdquo;
-            </p>
-            <p className="text-sm text-muted font-light">
-              — Hotel Shop Studio
-            </p>
-          </div>
-        </section>
+        {/* ───── Social Proof / Testimonials ───── */}
+        <SocialProof />
+
+        {/* ───── Full Product Grid with Filters ───── */}
+        <ProductGridFull products={products as any[]} />
 
         {/* ───── Subscribe CTA ───── */}
         <SubscribeSection />
-
-        {/* ───── Featured Collections ───── */}
-        <section className="bg-cream py-16 sm:py-24 lg:py-32">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="text-center mb-12 sm:mb-16">
-              <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
-                Shop by Category
-              </p>
-              <h2 className="font-display text-3xl sm:text-4xl text-charcoal font-light">
-                Curated by Room
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
-              {/* Bathroom collection */}
-              <div className="flex flex-col">
-                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
-                  <span className="font-display text-4xl text-charcoal/20">🛁</span>
-                </div>
-                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Bathroom</h3>
-                <p className="text-sm text-muted font-light mb-4">
-                  Spa-inspired essentials for luxurious daily rituals. From plush towels to elegant organizers.
-                </p>
-                <a 
-                  href="/shop/bathroom"
-                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
-                >
-                  <span>Explore Collection</span>
-                  <span>→</span>
-                </a>
-              </div>
-
-              {/* Kitchen collection */}
-              <div className="flex flex-col">
-                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
-                  <span className="font-display text-4xl text-charcoal/20">🍽️</span>
-                </div>
-                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Kitchen</h3>
-                <p className="text-sm text-muted font-light mb-4">
-                  Functional pieces that elevate everyday cooking and dining. Quality materials built to last.
-                </p>
-                <a 
-                  href="/shop/kitchen"
-                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
-                >
-                  <span>Explore Collection</span>
-                  <span>→</span>
-                </a>
-              </div>
-
-              {/* Bedroom collection */}
-              <div className="flex flex-col">
-                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
-                  <span className="font-display text-4xl text-charcoal/20">🛏️</span>
-                </div>
-                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Hotel Bedroom</h3>
-                <p className="text-sm text-muted font-light mb-4">
-                  Serene sanctuaries with high-quality bedding, lighting, and storage solutions for rest and renewal.
-                </p>
-                <a 
-                  href="/shop/bedroom"
-                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
-                >
-                  <span>Explore Collection</span>
-                  <span>→</span>
-                </a>
-              </div>
-
-              {/* Home essentials collection */}
-              <div className="flex flex-col">
-                <div className="aspect-square bg-warm-beige/30 rounded-sm mb-6 flex items-center justify-center border border-warm-beige/60">
-                  <span className="font-display text-4xl text-charcoal/20">✨</span>
-                </div>
-                <h3 className="font-display text-2xl text-charcoal font-light mb-2">Home Essentials</h3>
-                <p className="text-sm text-muted font-light mb-4">
-                  Thoughtful accents and organizational pieces that bring luxury touches to every room.
-                </p>
-                <a 
-                  href="/shop/home-essentials"
-                  className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal hover:text-rose transition-colors duration-300 mt-auto"
-                >
-                  <span>Explore Collection</span>
-                  <span>→</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />

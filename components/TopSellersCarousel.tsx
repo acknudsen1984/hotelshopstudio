@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import { Product } from '@/lib/products';
+import { Product, getProductUrl } from '@/lib/products';
 
 interface TopSellersCarouselProps {
   products: Product[];
@@ -90,14 +90,14 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
           >
             <div className="flex gap-6 pb-4 px-2">
               {products.slice(0, 9).map((product, index) => {
-                const href = product.affiliateLink || '#';
+                const href = getProductUrl(product.asin);
                 return (
                 <Link
                   key={`${product.category}-${product.name}-${index}`}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 group"
+                  className="flex-shrink-0 group relative"
                   style={{ width: '240px' }}
                 >
                   {/* Item number badge */}
