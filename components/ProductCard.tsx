@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { getProductUrl, type Product } from "@/lib/products";
+import { getProductUrl, getProductImage, type Product } from "@/lib/products";
 
 type ProductCardProps = {
   readonly product: Product;
@@ -15,7 +15,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
 
   const ext = PNG_ASINS.has(product.asin) ? "png" : "jpg";
-  const imageUrl = `/products/${product.asin}.${ext}`;
+  const localImageUrl = `/products/${product.asin}.${ext}`;
+  const imageUrl = product.image || getProductImage(product) || localImageUrl;
 
   return (
     <div className="group flex flex-col h-full">

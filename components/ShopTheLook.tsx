@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Product, AFFILIATE_TAG, getProductImage } from '@/lib/products';
 
 interface LifestyleScene {
@@ -38,15 +37,13 @@ export default function ShopTheLook({ scenes }: ShopTheLookProps) {
           {scenes.map((scene) => (
             <div key={scene.id} className="group">
               {/* Scene preview image */}
-              <div className="aspect-square bg-gradient-to-br from-warm-beige to-cream rounded-lg overflow-hidden mb-6 border border-warm-beige/50 group-hover:border-rose/30 transition-colors duration-300 relative">
-                <Image
-                  src={getProductImage(scene.products[0])}
-                  alt={scene.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <div 
+                className="aspect-square bg-cover bg-center rounded-lg overflow-hidden mb-6 border border-warm-beige/50 group-hover:border-rose/30 transition-all duration-300 group-hover:scale-105"
+                style={{
+                  backgroundImage: `url('${getProductImage(scene.products[0])}')`,
+                  backgroundColor: '#E8DFD7'
+                }}
+              />
 
               {/* Scene info and products */}
               <div>
