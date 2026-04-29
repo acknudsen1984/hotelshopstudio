@@ -3,7 +3,6 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import TopSellersCarousel from "@/components/TopSellersCarousel";
 import ShopTheLook from "@/components/ShopTheLook";
-import BrandStory from "@/components/BrandStory";
 import CollectionsGrid from "@/components/CollectionsGrid";
 import SocialProof from "@/components/SocialProof";
 import ProductGridFull from "@/components/ProductGridFull";
@@ -86,9 +85,6 @@ export default function Home() {
 
         {/* ───── Shop the Look Section ───── */}
         <ShopTheLook scenes={lifestyleScenes} />
-
-        {/* ───── Brand Story Section ───── */}
-        <BrandStory />
 
         {/* ───── Collections Grid ───── */}
         <CollectionsGrid />

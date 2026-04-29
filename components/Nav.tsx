@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: "Hotel Kitchen", href: "/hotel-kitchen" },
   { label: "Hotel Bedroom", href: "/hotel-bedroom" },
   { label: "Home Essentials", href: "/home-essentials" },
+  { label: "About", href: "/about" },
 ];
 
 export default function Nav() {
