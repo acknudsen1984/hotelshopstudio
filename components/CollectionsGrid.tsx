@@ -57,20 +57,20 @@ export default function CollectionsGrid() {
   };
 
   return (
-    <section className="bg-cream py-16 sm:py-24 lg:py-32">
+    <section className="bg-cream py-10 sm:py-16">
       <div className="mx-auto max-w-6xl px-5">
         {/* Section header */}
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
             Shop by Category
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
+          <h2 className="font-display text-3xl sm:text-4xl text-charcoal font-light">
             Curated Collections
           </h2>
         </div>
 
         {/* Collections grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
           {collections.map((collection) => {
             const productForImage = products.find(p => p.category === collection.category) || products[0];
             const imgUrl = getProductImage(productForImage);
@@ -82,8 +82,8 @@ export default function CollectionsGrid() {
                 href={collection.href}
                 className="group flex flex-col h-full"
               >
-                {/* Card image */}
-                <div className="aspect-square rounded-lg mb-6 border border-warm-beige/60 group-hover:border-rose/40 transition-all duration-300 overflow-hidden group-hover:scale-105 bg-off-white relative">
+                {/* Card image — compact */}
+                <div className="aspect-[4/3] rounded-lg mb-3 border border-warm-beige/60 group-hover:border-rose/40 transition-all duration-300 overflow-hidden group-hover:scale-[1.02] bg-off-white relative">
                   {!hasError ? (
                     <Image
                       src={imgUrl}
@@ -104,10 +104,10 @@ export default function CollectionsGrid() {
 
                 {/* Card content */}
                 <div className="flex-1 flex flex-col">
-                  <h3 className="font-display text-2xl sm:text-3xl text-charcoal font-light mb-2 group-hover:text-rose transition-colors duration-300">
+                  <h3 className="font-display text-base sm:text-lg text-charcoal font-light mb-1 group-hover:text-rose transition-colors duration-300">
                     {collection.title}
                   </h3>
-                  <p className="text-sm sm:text-base text-muted font-light mb-6 flex-1">
+                  <p className="text-xs text-muted font-light line-clamp-2 flex-1">
                     {collection.description}
                   </p>
                   <div className="inline-flex items-center gap-2 text-xs font-sans tracking-widest uppercase text-charcoal group-hover:text-rose transition-colors duration-300">

@@ -12,7 +12,7 @@ export default function Hero() {
       </div>
 
       {/* Content container */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 py-16 sm:py-20 lg:py-24 text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 py-10 sm:py-12 lg:py-14 text-center">
         {/* Eyebrow text */}
         <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3 sm:mb-4">
           Luxury Home Essentials
@@ -40,7 +40,7 @@ export default function Hero() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="hidden sm:flex justify-center mt-8 sm:mt-12 animate-bounce opacity-40">
+        <div className="hidden sm:flex justify-center mt-4 sm:mt-6 animate-bounce opacity-40">
           <svg className="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>

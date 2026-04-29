@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import TopSellersCarousel from "@/components/TopSellersCarousel";
 import CollectionsGrid from "@/components/CollectionsGrid";
-import SocialProof from "@/components/SocialProof";
 import ProductGridFull from "@/components/ProductGridFull";
+import SocialProof from "@/components/SocialProof";
 import SubscribeSection from "@/components/SubscribeSection";
 import { getFeaturedProducts, products } from "@/lib/products";
 
@@ -25,14 +25,14 @@ export default function Home() {
         {/* ───── Collections Grid ───── */}
         <CollectionsGrid />
 
-        {/* ───── Social Proof / Testimonials ───── */}
-        <SocialProof />
-
         {/* ───── Full Product Grid with Filters ───── */}
         <ProductGridFull products={products as any[]} />
 
         {/* ───── Subscribe CTA ───── */}
         <SubscribeSection />
+
+        {/* ───── Why Hotel Shop (right before footer) ───── */}
+        <SocialProof />
       </main>
 
       <Footer />
