@@ -52,15 +52,12 @@ export default function TopSellersCarousel({ products }: TopSellersCarouselProps
 
   return (
     <section className="bg-cream border-b border-warm-beige/30">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 pt-6 pb-12 sm:pt-8 sm:pb-16">
         {/* Section header */}
-        <div className="mb-10 sm:mb-12 text-center">
-          <p className="text-xs text-rose tracking-widest uppercase font-sans font-light mb-3">
+        <div className="mb-8 text-center">
+          <p className="text-xs text-rose tracking-widest uppercase font-sans font-light">
             This Week&apos;s Favorites
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-charcoal font-light">
-            Top Sellers
-          </h2>
         </div>
 
         {/* Carousel container with scroll controls */}
