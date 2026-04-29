@@ -19,8 +19,8 @@ export default function Home() {
         {/* ───── Top Sellers Carousel (right under nav) ───── */}
         <TopSellersCarousel products={featured as any[]} />
 
-        {/* ───── Hero Section (with email signup — above the fold) ───── */}
-        <Hero />
+        {/* ───── Subscribe CTA (above the fold) ───── */}
+        <SubscribeSection />
 
         {/* ───── Collections Grid ───── */}
         <CollectionsGrid />
@@ -28,8 +28,8 @@ export default function Home() {
         {/* ───── Full Product Grid with Filters ───── */}
         <ProductGridFull products={products as any[]} />
 
-        {/* ───── Subscribe CTA ───── */}
-        <SubscribeSection />
+        {/* ───── Hero Section (email signup — before footer) ───── */}
+        <Hero />
 
         {/* ───── Why Hotel Shop (right before footer) ───── */}
         <SocialProof />
