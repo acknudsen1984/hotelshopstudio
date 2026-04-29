@@ -1,0 +1,10 @@
+export { default as HeroCarousel } from './HeroCarousel';
+export { default as InstagramSection } from './InstagramSection';
+export { default as RecentFinds } from './RecentFinds';
+export { default as ShopTheRoom } from './ShopTheRoom';
+export { default as BlogGrid } from './BlogGrid';
+export { default as MeetTheTeam } from './MeetTheTeam';
+export { default as SocialLinks } from './SocialLinks';
+export { default as CuratedCarousel } from './CuratedCarousel';
+export { default as Newsletter } from './Newsletter';
+export { default as CategoryPage } from './CategoryPage';

@@ -36,10 +36,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${poppins.variable} h-full antialiased scroll-smooth`}
-      data-scroll-behavior="smooth"
+      className={`${cormorant.variable} ${poppins.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col font-sans bg-cream text-charcoal antialiased">
+      <body className="min-h-screen flex flex-col bg-cream text-charcoal antialiased font-sans">
         {children}
       </body>
     </html>
