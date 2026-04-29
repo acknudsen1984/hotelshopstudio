@@ -518,6 +518,17 @@ export const hotelBathroomProducts: readonly CategoryProduct[] = [
   { id: 'bath-6', name: 'Bathroom Sink Accessory Set', price: '$37', image: driveImg('1SPBpL3WP0sCDZk2pdQtCYIRp4fxWG7jB'), amazonUrl: 'https://amzn.to/4a9iJSX' },
   { id: 'bath-7', name: 'Toilet Brush', price: '$23', image: driveImg('108SDB_R7zjQsxl_1-3-FIav6XtLa5NH8'), amazonUrl: 'https://amzn.to/3McsuI0' },
   { id: 'bath-8', name: 'Metal Toothbrush Holder', price: '$16', image: driveImg('1bhCIg9FHLlRu8yhANC6rpZxX5q9Q9Xa5'), amazonUrl: 'https://amzn.to/46gmWCX' },
+  // Original curated picks
+  { id: 'ba-1', name: 'Cotton Towels', image: 'https://images.unsplash.com/photo-1583845112239-97ef1341b271?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=cotton+towels&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-2', name: 'Wood Stool', image: 'https://images.unsplash.com/photo-1503602642458-232111445657?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=wood+stool&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-3', name: 'Soap Dispenser', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=soap+dispenser&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-4', name: 'Bath Mat', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=bath+mat&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-5', name: 'Waffle Robe', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=waffle+robe&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-6', name: 'Marble Tray', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=marble+tray&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-7', name: 'Toilet Brush', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=toilet+brush&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-8', name: 'Storage Basket', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=storage+basket&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-9', name: 'Tissue Box', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=tissue+box&tag=${AFFILIATE_TAG}` },
+  { id: 'ba-10', name: 'Candle Holder', image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=candle+holder&tag=${AFFILIATE_TAG}` },
 ] as const;
 
 export const hotelKitchenProducts: readonly CategoryProduct[] = [
@@ -531,6 +542,19 @@ export const hotelKitchenProducts: readonly CategoryProduct[] = [
   { id: 'kit-8', name: 'Trivets', price: '$15', image: driveImg('1rh4V_y8Z-KlBcIdk6j71oMzM3J_Q_V9X'), amazonUrl: 'https://amzn.to/45AIWse' },
   { id: 'kit-9', name: 'Serax Glass Water Pitcher', price: '$56', image: driveImg('1ro9qBOx5Zj2IAaOLQm4SZUN8RMIH8c6I'), amazonUrl: 'https://amzn.to/4ey6NOk' },
   { id: 'kit-10', name: 'Stoneware Cheese Board', price: '$24.99', image: driveImg('1PQIp90YwcQcV0uOjpJqkj_Xpktt12eEV'), amazonUrl: 'https://amzn.to/4ctj3yl' },
+  // Original curated picks
+  { id: 'ki-1', name: 'Olive Oil Cruet', image: 'https://images.unsplash.com/photo-1556225286-c4a46b8e7dff?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=olive+oil+cruet&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-2', name: 'Cutting Board', image: 'https://images.unsplash.com/photo-1504674900967-a8f32de4490d?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=cutting+board&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-3', name: 'Utensil Holder', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=utensil+holder&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-4', name: 'Fruit Bowl', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=fruit+bowl&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-5', name: 'Dish Towels', image: 'https://images.unsplash.com/photo-1583845112239-97ef1341b271?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=dish+towels&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-6', name: 'Salt Cellar', image: 'https://images.unsplash.com/photo-1556225286-c4a46b8e7dff?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=salt+cellar&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-7', name: 'Canister Set', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=canister+set&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-8', name: 'Paper Towel Holder', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=paper+towel+holder&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-9', name: 'Serving Tray', image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=serving+tray&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-10', name: 'Sponge Holder', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=sponge+holder&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-11', name: 'Spice Jars', image: 'https://images.unsplash.com/photo-1556225286-c4a46b8e7dff?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=spice+jars&tag=${AFFILIATE_TAG}` },
+  { id: 'ki-12', name: 'Lazy Susan', image: 'https://images.unsplash.com/photo-1504674900967-a8f32de4490d?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=lazy+susan&tag=${AFFILIATE_TAG}` },
 ] as const;
 
 export const hotelBedroomProducts: readonly CategoryProduct[] = [
@@ -540,6 +564,17 @@ export const hotelBedroomProducts: readonly CategoryProduct[] = [
   { id: 'bed-4', name: 'Queen Bed Pillow Set', price: '$39', image: driveImg('1PS2xqfhUUmMS8XAHuNvR1_PkekE08u1F'), amazonUrl: `https://www.amazon.com/dp/B01LYNW421/?tag=${AFFILIATE_TAG}` },
   { id: 'bed-5', name: 'Bedside Lamp', price: '$70', image: driveImg('1jqC-aDJLssGNMJG1zy0pXqlM5JE8aL0c'), amazonUrl: 'https://amzn.to/49QczIx' },
   { id: 'bed-6', name: 'Floor Full Length Mirror', price: '$117', image: driveImg('1Zp2dyXDUjA8PBhLoLrAHNMq0bLmuT9Zq'), amazonUrl: 'https://amzn.to/4kbp2tV' },
+  // Original curated picks
+  { id: 'br-1', name: 'Linen Sheets', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=linen+sheets&tag=${AFFILIATE_TAG}` },
+  { id: 'br-2', name: 'Velvet Pillow', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=velvet+pillow&tag=${AFFILIATE_TAG}` },
+  { id: 'br-3', name: 'Table Lamp', image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=table+lamp&tag=${AFFILIATE_TAG}` },
+  { id: 'br-4', name: 'Throw Blanket', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=throw+blanket&tag=${AFFILIATE_TAG}` },
+  { id: 'br-5', name: 'Nightstand', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=nightstand&tag=${AFFILIATE_TAG}` },
+  { id: 'br-6', name: 'Wall Mirror', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=wall+mirror&tag=${AFFILIATE_TAG}` },
+  { id: 'br-7', name: 'Ceramic Vase', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=ceramic+vase&tag=${AFFILIATE_TAG}` },
+  { id: 'br-8', name: 'Bed Frame', image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=bed+frame&tag=${AFFILIATE_TAG}` },
+  { id: 'br-9', name: 'Area Rug', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=area+rug&tag=${AFFILIATE_TAG}` },
+  { id: 'br-10', name: 'Scented Candle', image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=scented+candle&tag=${AFFILIATE_TAG}` },
 ] as const;
 
 export const homeEssentialsProducts: readonly CategoryProduct[] = [
@@ -573,4 +608,25 @@ export const homeEssentialsProducts: readonly CategoryProduct[] = [
   { id: 'home-28', name: 'Wicker Storage Basket With Lid Set Of 3', price: '$50', image: driveImg('11B1AsrzLvX43qubl7OInHuO1fKv3sC8D'), amazonUrl: 'https://amzn.to/4e4xqdv' },
   { id: 'home-29', name: 'Disposable Cotton Cocktail Napkins', price: '$19', image: driveImg('1eyIY2NsU7iUo12hXHEMcVbdEtUPm-oH9'), amazonUrl: 'https://amzn.to/48MLfK6' },
   { id: 'home-30', name: 'Marbled Resin Cheese Board', price: '$62', image: driveImg('1ZEADQaTaDIVc70WiYu9CrDjmBS37IE8X'), amazonUrl: 'https://amzn.to/4sM40V5' },
+  // Original curated picks
+  { id: 'lr-1', name: 'Coffee Table', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=coffee+table&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-2', name: 'Floor Lamp', image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=floor+lamp&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-3', name: 'Throw Pillow', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=throw+pillow&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-4', name: 'Area Rug', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=area+rug&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-5', name: 'Bookends', image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=bookends&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-6', name: 'Art Print', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=art+print&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-7', name: 'Candle Set', image: 'https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=candle+set&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-8', name: 'Side Table', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=side+table&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-9', name: 'Blanket Ladder', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=blanket+ladder&tag=${AFFILIATE_TAG}` },
+  { id: 'lr-10', name: 'Plant Pot', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=plant+pot&tag=${AFFILIATE_TAG}` },
+  { id: 'en-1', name: 'Console Table', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=console+table&tag=${AFFILIATE_TAG}` },
+  { id: 'en-2', name: 'Wall Mirror', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=wall+mirror&tag=${AFFILIATE_TAG}` },
+  { id: 'en-3', name: 'Key Tray', image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=key+tray&tag=${AFFILIATE_TAG}` },
+  { id: 'en-4', name: 'Coat Hooks', image: 'https://images.unsplash.com/photo-1584622614875-2f3ee969885a?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=coat+hooks&tag=${AFFILIATE_TAG}` },
+  { id: 'en-5', name: 'Umbrella Stand', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=umbrella+stand&tag=${AFFILIATE_TAG}` },
+  { id: 'en-6', name: 'Door Mat', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=door+mat&tag=${AFFILIATE_TAG}` },
+  { id: 'en-7', name: 'Bench', image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=entryway+bench&tag=${AFFILIATE_TAG}` },
+  { id: 'en-8', name: 'Storage Basket', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=storage+basket&tag=${AFFILIATE_TAG}` },
+  { id: 'en-9', name: 'Wall Art', image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=wall+art&tag=${AFFILIATE_TAG}` },
+  { id: 'en-10', name: 'Table Lamp', image: 'https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?w=200&h=200&fit=crop', amazonUrl: `https://www.amazon.com/s?k=table+lamp&tag=${AFFILIATE_TAG}` },
 ] as const;

@@ -108,7 +108,7 @@ export type CuratedProduct = {
 export type CategoryProduct = {
   readonly id: string;
   readonly name: string;
-  readonly price: string;
+  readonly price?: string;
   readonly image: string;
   readonly amazonUrl: string;
 };
