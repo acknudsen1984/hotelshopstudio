@@ -21,7 +21,8 @@ export default function CategoryNav({ selected }: CategoryNavProps) {
             return (
               <Link
                 key={category.slug}
-                href={`/shop/${category.slug}`}
+                href={category.slug === 'home-essentials' ? '/home-essentials' : `/hotel-${category.slug}`}
+
                 className={`group flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-10 rounded-sm border transition-all duration-300 ${
                   isSelected
                     ? "border-rose bg-white shadow-md"

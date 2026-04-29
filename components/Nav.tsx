@@ -5,10 +5,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 const NAV_LINKS = [
-  { label: "Hotel Bathroom", href: "/shop/bathroom" },
-  { label: "Hotel Kitchen", href: "/shop/kitchen" },
-  { label: "Hotel Bedroom", href: "/shop/bedroom" },
-  { label: "Home Essentials", href: "/shop/home-essentials" },
+  { label: "Hotel Bathroom", href: "/hotel-bathroom" },
+  { label: "Hotel Kitchen", href: "/hotel-kitchen" },
+  { label: "Hotel Bedroom", href: "/hotel-bedroom" },
+  { label: "Home Essentials", href: "/home-essentials" },
 ];
 
 export default function Nav() {

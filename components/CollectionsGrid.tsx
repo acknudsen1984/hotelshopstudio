@@ -20,7 +20,7 @@ const collections: CollectionCard[] = [
     title: 'Hotel Bathroom',
     description: 'Spa-inspired essentials for luxurious daily rituals. From plush towels to elegant organizers.',
     icon: '🛁',
-    href: '/shop/bathroom',
+    href: '/hotel-bathroom',
     category: 'bathroom',
   },
   {
@@ -28,7 +28,7 @@ const collections: CollectionCard[] = [
     title: 'Hotel Kitchen',
     description: 'Functional pieces that elevate everyday cooking and dining. Quality materials built to last.',
     icon: '🍽️',
-    href: '/shop/kitchen',
+    href: '/hotel-kitchen',
     category: 'kitchen',
   },
   {
@@ -36,7 +36,7 @@ const collections: CollectionCard[] = [
     title: 'Hotel Bedroom',
     description: 'Serene sanctuaries with high-quality bedding, lighting, and storage for rest and renewal.',
     icon: '🛏️',
-    href: '/shop/bedroom',
+    href: '/hotel-bedroom',
     category: 'bedroom',
   },
   {
@@ -44,7 +44,7 @@ const collections: CollectionCard[] = [
     title: 'Home Essentials',
     description: 'Thoughtful accents and organizational pieces that bring luxury touches to every room.',
     icon: '✨',
-    href: '/shop/home-essentials',
+    href: '/home-essentials',
     category: 'home-essentials',
   },
 ];
