@@ -7,3 +7,4 @@ export { default as MeetTheTeam } from './MeetTheTeam';
 export { default as SocialLinks } from './SocialLinks';
 export { default as CuratedCarousel } from './CuratedCarousel';
 export { default as Newsletter } from './Newsletter';
+export { default as CategoryPage } from './CategoryPage';

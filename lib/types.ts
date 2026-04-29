@@ -103,6 +103,16 @@ export type CuratedProduct = {
   readonly amazonUrl: string;
 };
 
+// ─── Category Product Types ──────────────────────────────
+
+export type CategoryProduct = {
+  readonly id: string;
+  readonly name: string;
+  readonly price: string;
+  readonly image: string;
+  readonly amazonUrl: string;
+};
+
 // ─── Footer Types ────────────────────────────────────────
 
 export type FooterColumn = {

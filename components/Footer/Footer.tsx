@@ -150,6 +150,9 @@ export default function Footer() {
           <p className="font-sans text-[10px] text-white/30 mt-2">
             As an Amazon Associate, we earn from qualifying purchases.
           </p>
+          <p className="font-sans text-[10px] text-white/30 mt-1">
+            Prices may vary — check Amazon for current pricing.
+          </p>
           <div className="mt-3">
             <Link
               href="/privacy"
